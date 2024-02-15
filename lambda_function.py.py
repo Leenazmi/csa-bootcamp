@@ -49,10 +49,9 @@ def api():
         model = joblib.load('svcModel.joblib')
         response = model.predict(new_array)
         print(response[0])
-        return jsonify({
-            'statusCode': 200,
-            'body': "${response[0]}"
-        })
+        return jsonify(
+            body= str(response[0])
+        )
     
 if __name__ == '__main__':
     app.run(debug=False, host='0.0.0.0')
