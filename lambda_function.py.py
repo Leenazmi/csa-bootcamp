@@ -5,7 +5,7 @@ import joblib
 import base64
 from flask import Flask, jsonify, request
 import os
-
+from flask_cors import CORS
 def decode(encoded_img):
     aux_path = 'tmp.png'
     with open(aux_path, "wb") as f:
@@ -20,7 +20,7 @@ def decode(encoded_img):
     
 
 app = Flask(__name__)
-
+CORS(app)
 
 @app.route('/predict', methods=['POST'])
 def api():
